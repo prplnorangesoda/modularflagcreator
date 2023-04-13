@@ -1,0 +1,310 @@
+html {
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 16px;
+    height: 100vh;
+    background-color: var(--bg-col);
+    color: var(--text-col);
+}
+/* sorry gd colon, i loved the scrollbar on your website */
+/* color and width from thirtydollarwebsite.com by GDColon http://gdcolon.com */
+main::-webkit-scrollbar {
+    width: 12px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+main::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.33);
+    border-radius: 10px;
+}
+
+main::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+}
+
+main {
+    overflow-y: auto;
+    height: calc(90vh - 20px); /* for border of footer, such a **** hack */
+    padding-bottom: 0;
+}
+
+div.title {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+div.title > h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+div.title > p {
+    font-size: 1.2em;
+}
+
+/* articles and stuff */
+
+div.projects-container {
+    margin-bottom: 20px;
+}
+
+div.projects {
+    display: table;
+    height: max-content;
+    width: min(90%, 1200px);
+    margin: auto;
+}
+/* each article should be centered and float a bit off to the side */
+/* odd articles float slightly to the right, even articles float slightly to the left */
+/* since css is 1-indexed, it looks the opposite */
+
+
+div.projects > article:nth-child(even) {
+    float: right;
+    margin-right: 10%;
+}
+div.projects > article:nth-child(odd) {
+    float: left;
+    margin-left: 10%;
+}
+
+
+div.projects > article {
+    width: min(calc(60% - 50px), 600px);
+    background-color: var(--bg-col);
+    margin-bottom: 30px;
+    margin-right: 10%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* tiny border */
+    padding: 30px;
+    border: 3px solid var(--border-col);
+    border-bottom: 5px solid var(--border-col);
+    border-radius: 10px;
+}
+
+/* in case too small for floating */
+@media (max-width: 700px) {
+    div.projects > article {
+        float: none !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 70%;
+    }
+    div.projects {
+        display: block !important;
+        margin: auto !important;
+    }
+}
+@media (max-width: 500px) {
+    div.projects > article {
+        width: 80%;
+    }
+}
+
+h2.heading {
+    text-align: center;
+    margin: auto;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+h3.heading {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+article > button.link {
+    background-color: var(--button-blue-bg-col);
+    padding: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--button-blue-bg-col);
+    color: var(--dark-text-col);
+    cursor: pointer;
+}
+/* footer stuffs */
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: var(--bg-emphasis-col);
+    border-top: 10px solid var(--dark-border-emphasis-col);
+}
+
+footer > nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* mobile resizing, default doesn't scale well */
+@media (min-width: 500px) {
+    footer {
+        height: max(10vh - 10px, 110px);
+    }
+    footer > nav {
+        display: flex;
+        height: max(8vh,60px);
+    }
+}
+@media (min-width: 300px) and (max-width: 500px) {
+    main {
+        height: min(100vh - 170px, 100vh - 15vh)
+    }
+    footer {
+        height: max(15vh, 160px);
+    }
+    footer > nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        transform: translateY(0%);
+        height: max(calc(10vh - 10px), 100px);
+        margin-bottom: max(4%, 40px);
+        margin-top: max(1%, 10px);
+    }
+    footer > nav > div {
+        justify-self: center;
+    }
+}
+@media (max-width: 300px) {
+    main {
+        height: min(80vh, 100vh - 230px);
+        overflow-x: hidden;
+    }
+    footer {
+        height: max(20vh, 220px);
+    }
+    footer > nav {
+        display: grid;
+        grid-template-rows: 1fr;
+        transform: translateY(0%);
+    }
+    footer > nav > div {
+        justify-self: center;
+    }
+}
+
+footer > nav > div {
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    padding: 1%;
+}
+
+footer > nav > div > * {
+    display: inline;
+    color: var(--link-col);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+footer > nav > div > a:hover {
+    text-decoration: underline;
+}
+
+footer > nav > div.unclickable > a:hover {
+    text-decoration: underline dotted;
+}
+
+footer > nav > div > a > span {
+    display: none;
+}
+footer > nav > div > a:hover > span, footer > nav > div > a:focus > span {
+    position: absolute;
+    display: block;
+    padding-left: 0;
+    color: var(--text-col);
+}
+
+span.copyright {
+    font-size: 0.8em;
+    /* affix to bottom right */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    text-align: center;
+    padding: 10px;
+    color: darkslategray;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.toggle {
+    background-color: var(--button-red-bg-col);
+    border-color: var(--button-red-bg-col);
+    color: var(--dark-text-col);
+}
+
+.toggleoff {
+    background-color: var(--button-blue-bg-col);
+    border-color: var(--button-blue-bg-col);
+    color: var(--dark-text-col);
+}
+
+.flagbutton#a {
+    background-color: var(--a);
+    color: white;
+}
+
+.flagbutton#bi {
+    background-color: var(--bi);
+}
+
+.flagbutton#demi {
+    background-color: var(--demi);
+}
+
+.flagbutton#fluid {
+    background-color: var(--fluid);
+}
+
+.flagbutton#flux {
+    background-color: var(--flux);
+}
+
+.flagbutton#homo {
+    background-color: var(--homo)
+}
+
+.flagbutton#inter {
+    background-color: var(--inter)
+}
+
+.flagbutton#pan { 
+    background-color: var(--pan)
+}
+
+.flagbutton#poly {
+    background-color: var(--poly)
+}
+
+.flagbutton#queer {
+    background-color: var(--queer)
+}
+
+.flagbutton#trans {
+    background-color: var(--trans)
+}

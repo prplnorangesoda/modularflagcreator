@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flag Creator</title>
+  <script defer src="main.js"></script>
+  <link rel="stylesheet" href="main.css" />
+  <style>
+    :root {
+      --bg-col: #161b22;
+      --bg-emphasis-col: #060708;
+      --text-col: rgb(223, 223, 223);
+      --link-col: skyblue;
+      --dark-text-col: rgb(17, 60, 87);
+      --dark-bg-col: rgb(17, 60, 87);
+      --border-col: rgba(0, 0, 0, 0.15);
+      --dark-border-emphasis-col: #262f3b;
+
+      --button-blue-bg-col: lightskyblue;
+      --button-blue-text-col: var(--dark-text-col);
+
+      --button-red-bg-col: rgb(224, 118, 118);
+      --button-red-text-col: var(--dark-text-col);
+
+      /* flag colors */
+      --homo: #D71C1B;
+      --bi: #9955FF;
+      --a: #000000;
+      --trans: #FFFFFF;
+      --flux: #80E5FE;
+      --pan: #FDFF7D;
+      --queer: #E480FF;
+      --demi: #999999;
+      --inter: #6F38C5;
+      --fluid: #29FFD5;
+      --poly: #65FE29;
+
+      --sexual: #FF297F;
+      --romantic: #5CD58D;
+      --gender: #6600FF;
+      --gamous: #FFFFFF;
+      --sex: #FFF301;
+    }
+  </style>
+</head>
+
+<body>
+  <h1> Dynamic Flag Creator </h1>
+
+  <button class="toggle toggleoff" id="toggle23">2 color mode</button>
+  <button class="toggle toggleoff" id="simpletoggle">simple flag mode</button>
+  <h2> above ones don't do anything yet </h2>
+  <!-- simple mode -->
+  <div class="buttonscontainer" id="queercontainer">
+    <button class="flagbutton queer" id="a">a</button>
+    <button class="flagbutton queer" id="bi">bi</button>
+    <button class="flagbutton queer" id="demi">demi</button>
+    <button class="flagbutton queer" id="fluid">fluid</button>
+    <button class="flagbutton queer" id="flux">flux</button>
+    <button class="flagbutton queer" id="homo">homo</button>
+    <button class="flagbutton queer" id="inter">inter</button>
+    <button class="flagbutton queer" id="pan">pan</button>
+    <button class="flagbutton queer" id="poly">poly</button>
+    <button class="flagbutton queer" id="queer">queer</button>
+    <button class="flagbutton queer" id="trans">trans</button>
+  </div>
+  <div class="buttonscontainer" id="typecontainer">
+    <button class="flagbutton type" id="sexual">sexual</button>
+    <button class="flagbutton type" id="romantic">romantic</button>
+    <button class="flagbutton type" id="gender">gender</button>
+    <button class="flagbutton type" id="gamous">gamous</button>
+    <button class="flagbutton type" id="sex">sex</button>
+  </div>
+  <canvas id="dynimage" width="960" height="640">
+
+  </canvas>
+
+  <span class="copyright">
+    (c) rafplayz.dev 2023
+  </span>
+</body>
+
+</html>
