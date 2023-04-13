@@ -3,7 +3,7 @@ if (!toggle) throw new Error("#toggle23 undefined");
 let toggleon = false;
 
 let simpletoggle = document.querySelector("#simpletoggle");
-if(!simpletoggle) throw new Error("#simpletoggle undefined")
+if (!simpletoggle) throw new Error("#simpletoggle undefined")
 let simpletoggleon = false;
 
 let queerButtonSelected = null;
@@ -18,52 +18,65 @@ typebuttons.forEach(button => {
   button.addEventListener("mousedown", loadImage2)
 })
 
+let modifierbuttons = document.querySelectorAll(".flagbutton.modifier")
+modifierbuttons.forEach(button => {
+  button.addEventListener("mousedown", loadImage3)
+})
+
 let image1Loaded = false;
 let image2Loaded = false;
 
 let queerArr = ["a", "bi", "demi", "fluid",
-"flux", "homo", "inter", "pan", "poly", "queer", "trans"]
+  "flux", "homo", "inter", "pan", "poly", "queer", "trans"]
 let queerImageSrcs = [
-"flagmods/flagqueermod/a.png",
-"flagmods/flagqueermod/bi.png",
-"flagmods/flagqueermod/demi.png",
-"flagmods/flagqueermod/fluid.png",
-"flagmods/flagqueermod/flux.png",
-"flagmods/flagqueermod/homo.png",
-"flagmods/flagqueermod/inter.png",
-"flagmods/flagqueermod/pan.png",
-"flagmods/flagqueermod/poly.png",
-"flagmods/flagqueermod/queer.png",
-"flagmods/flagqueermod/trans.png",
+  "flagmods/flagqueermod/a.png",
+  "flagmods/flagqueermod/bi.png",
+  "flagmods/flagqueermod/demi.png",
+  "flagmods/flagqueermod/fluid.png",
+  "flagmods/flagqueermod/flux.png",
+  "flagmods/flagqueermod/homo.png",
+  "flagmods/flagqueermod/inter.png",
+  "flagmods/flagqueermod/pan.png",
+  "flagmods/flagqueermod/poly.png",
+  "flagmods/flagqueermod/queer.png",
+  "flagmods/flagqueermod/trans.png",
 ]
 
 let typeArr = ["sexual", "romantic", "gender",
-"gamous", "sex"]
+  "gamous", "sex"]
 let typeImageSrcs = [
-"flagmods/flagtypemod/sexual.png",
-"flagmods/flagtypemod/romantic.png",
-"flagmods/flagtypemod/gender.png",
-"flagmods/flagtypemod/gamous.png",
-"flagmods/flagtypemod/sex.png",
+  "flagmods/flagtypemod/sexual.png",
+  "flagmods/flagtypemod/romantic.png",
+  "flagmods/flagtypemod/gender.png",
+  "flagmods/flagtypemod/gamous.png",
+  "flagmods/flagtypemod/sex.png",
+]
+
+let modifierArr = ["masculine", "feminine"]
+let modifierImageSrcs = [
+  "flagmods/flagmodifiermod/masculine.png",
+  "flagmods/flagmodifiermod/feminine.png",
 ]
 
 toggle.addEventListener("mousedown", ev => {
-  if(ev.button == "0") {
+  if (ev.button == "0") {
     toggle.classList.toggle("toggleoff");
-    if(toggleon) {
+    if (toggleon) {
       toggleon = false;
       toggle.innerHTML = "2 color mode";
+      switchTo2ColorMode();
     }
     else if (!toggleon) {
       toggleon = true;
       toggle.innerHTML = "3 color mode";
+      switchTo3ColorMode();
     }
   }
 })
 simpletoggle.addEventListener("mousedown", ev => {
-  if(ev.button == "0") {
+  if (ev.button == "0") {
     simpletoggle.classList.toggle("toggleoff")
-    if(simpletoggleon) {
+    if (simpletoggleon) {
       simpletoggleon = false;
       simpletoggle.innerHTML = "simple flag mode"
     }
@@ -79,6 +92,7 @@ let ctx = canvas.getContext("2d");
 
 let image1 = new Image();
 let image2 = new Image();
+let image3 = new Image();
 
 /**
  * 
@@ -88,8 +102,12 @@ function loadImage1(event) {
   let index = queerArr.indexOf(event.target.id)
   image1.src = queerImageSrcs[index]
   image1.onload = () => {
-    image1Loaded = true;
-    ctx.drawImage(image1, 0, 0);
+    if (toggleon) {
+      ctx.drawImage(image1, 0, 200, 900, 200);
+    }
+    else {
+      ctx.drawImage(image1, 0, 0);
+    }
   };
 }
 
@@ -97,11 +115,32 @@ function loadImage2(event) {
   let index = typeArr.indexOf(event.target.id)
   image2.src = typeImageSrcs[index]
   image2.onload = () => {
-    image2Loaded = true;
-    ctx.drawImage(image2, 0, 320)
+    if (toggleon) {
+      ctx.drawImage(image2, 0, 400, 900, 200)
+    }
+    else {
+      ctx.drawImage(image2, 0, 300)
+    }
   }
 }
 
+function loadImage3(event) {
+  if (toggleon) {
+    let index = modifierArr.indexOf(event.target.id)
+    image3.src = modifierImageSrcs[index]
+    image3.onload = () => {
+      ctx.drawImage(image3, 0, 0, 900, 200)
+    }
+  }
+}
+
+function switchTo3ColorMode() {
+  ctx.clearRect(0, 0, 900, 600)
+}
+
+function switchTo2ColorMode() {
+  ctx.clearRect(0, 0, 900, 600)
+}
 
 
 
