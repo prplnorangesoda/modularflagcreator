@@ -97,3 +97,23 @@ button {
 .flagbutton#trans {
     background-color: var(--trans)
 }
+
+.flagbutton#sexual {
+    background-color: var(--sexual)
+}
+
+.flagbutton#romantic { 
+    background-color: var(--romantic)
+}
+
+.flagbutton#gender {
+    background-color: var(--gender)
+}
+
+.flagbutton#gamous {
+    background-color: var(--gamous)
+}
+
+.flagbutton#sex {
+    background-color: var(--sex)
+}
