@@ -213,6 +213,14 @@ function switchTo2ColorMode() {
     .forEach(el => el.classList.add("off"))
 }
 
+document.querySelector("#save").addEventListener("mousedown", ev => {
+  if(ev.button = "0") {
+    let link = document.createElement('a');
+    link.download = 'flag.png';
+    link.href = canvas.toDataURL()
+    link.click();
+  }
+})
 
 
 

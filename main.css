@@ -169,3 +169,7 @@ div.divider {
 .flagbutton#feminine {
     background-color: var(--feminine);
 }
+
+button#save {
+    background-color: orange;
+}
