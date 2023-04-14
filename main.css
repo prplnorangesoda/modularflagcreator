@@ -74,6 +74,11 @@ button {
     background-color: lightgray !important;
 }
 
+.flagbutton.clicked {
+    border-color: white;
+    border-style: dashed;
+}
+
 .flagbutton#a {
     background-color: var(--a);
     color: white;

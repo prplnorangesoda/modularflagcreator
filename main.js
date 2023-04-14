@@ -1,6 +1,6 @@
 let toggle2 = document.querySelector("#toggle2");
 if (!toggle2) throw new Error("#toggle2 undefined");
-let toggleon = false;
+let color3mode = false;
 
 let toggle3 = document.querySelector("#toggle3");
 if (!toggle3) throw new Error("#toggle3 undefined");
@@ -63,10 +63,10 @@ let modifierImageSrcs = [
 
 toggle2.addEventListener("mousedown", ev => {
   if (ev.button == "0") {
-    if (toggleon) {
+    if (color3mode) {
       toggle3.classList.remove("on");
       toggle2.classList.add("on");
-      toggleon = false;
+      color3mode = false;
       switchTo2ColorMode();
     }
     
@@ -75,10 +75,10 @@ toggle2.addEventListener("mousedown", ev => {
 
 toggle3.addEventListener("mousedown", ev => {
   if(ev.button == "0") {
-    if (!toggleon) {
+    if (!color3mode) {
       toggle2.classList.remove("on");
       toggle3.classList.add("on")
-      toggleon = true;
+      color3mode = true;
       switchTo3ColorMode();
     }
   }
@@ -94,54 +94,123 @@ let image1 = new Image();
 let image2 = new Image();
 let image3 = new Image();
 
+let image1mode2 = null;
+let image2mode2 = null;
+
+let image1mode3 = null;
+let image2mode3 = null;
+let image3mode3 = null;
+
+/**
+ * @type {HTMLElement?}
+ */
+let image1mode2Selected = null;
+let image2mode2Selected = null;
+
+let image1mode3Selected = null;
+let image2mode3Selected = null;
+let image3mode3Selected = null;
+
 /**
  * 
  * @param {MouseEvent} event 
  */
 function loadImage1(event) {
+  
   let index = queerArr.indexOf(event.target.id)
   image1.src = queerImageSrcs[index]
   image1.onload = () => {
-    if (toggleon) {
-      ctx.drawImage(image1, 0, 200, 900, 200);
+    if (color3mode) {
+      ctx.drawImage(image1, 0, 100, 450, 100);
+      image1mode3 = image1
+      if(image1mode3Selected)
+        image1mode3Selected.classList.remove("clicked")
+      image1mode3Selected = event.target
     }
     else {
-      ctx.drawImage(image1, 0, 0, 900, 300);
+      ctx.drawImage(image1, 0, 0, 450, 150);
+      image1mode2 = image1
+      if(image1mode2Selected){
+        image1mode2Selected.classList.remove("clicked");
+      }
+      image1mode2Selected = event.target
     }
+    event.target.classList.add("clicked")
   };
+  
 }
 
 function loadImage2(event) {
   let index = typeArr.indexOf(event.target.id)
   image2.src = typeImageSrcs[index]
   image2.onload = () => {
-    if (toggleon) {
-      ctx.drawImage(image2, 0, 400, 900, 200)
+    if (color3mode) {
+      ctx.drawImage(image2, 0, 200, 450, 100)
+      image2mode3 = image2
+      if(image2mode3Selected)
+        image2mode3Selected.classList.remove("clicked")
+      image2mode3Selected = event.target
     }
     else {
-      ctx.drawImage(image2, 0, 300)
+      ctx.drawImage(image2, 0, 150, 450, 150)
+      image2mode2 = image2
+      if(image2mode2Selected) 
+        image2mode2Selected.classList.remove("clicked")
+      image2mode2Selected = event.target
     }
+    event.target.classList.add("clicked")
   }
 }
 
 function loadImage3(event) {
-  if (toggleon) {
+  if (color3mode) {
     let index = modifierArr.indexOf(event.target.id)
     image3.src = modifierImageSrcs[index]
     image3.onload = () => {
-      ctx.drawImage(image3, 0, 0, 900, 200)
+      ctx.drawImage(image3, 0, 0, 450, 100)
     }
+    image3mode3 = image3;
+    if(image3mode3Selected)
+      image3mode3Selected.classList.remove("clicked")
+    image3mode3Selected = event.target
+    event.target.classList.add("clicked")
   }
 }
 
 function switchTo3ColorMode() {
   ctx.fillRect(0, 0, 900, 600)
-  document.querySelectorAll(".modifier").forEach(el => el.classList.remove("off"))
+
+  if(image1mode3) ctx.drawImage(image1mode3, 0, 100, 450, 100)
+  if(image2mode3) ctx.drawImage(image2mode3, 0, 200, 450, 100)
+  if(image3mode3) ctx.drawImage(image3mode3, 0, 0, 450, 100)
+
+  
+  document.querySelectorAll(".flagbutton")
+    .forEach(el => el.classList.remove("clicked"))
+
+  if(image1mode3Selected) image1mode3Selected.classList.add("clicked")
+  if(image2mode3Selected) image2mode3Selected.classList.add("clicked")
+  if(image3mode3Selected) image3mode3Selected.classList.add("clicked")
+
+
+  document.querySelectorAll(".modifier")
+    .forEach(el => el.classList.remove("off"))
 }
 
 function switchTo2ColorMode() {
   ctx.fillRect(0, 0, 900, 600)
-  document.querySelectorAll(".modifier").forEach(el => el.classList.add("off"))
+
+  if(image1mode2) ctx.drawImage(image1mode2, 0, 0, 450, 150)
+  if(image2mode2) ctx.drawImage(image2mode2, 0, 150, 450, 150)
+
+  document.querySelectorAll(".flagbutton")
+    .forEach(el => el.classList.remove("clicked"))
+
+  if(image1mode2Selected) image1mode2Selected.classList.add("clicked")
+  if(image2mode2Selected) image2mode2Selected.classList.add("clicked")
+
+  document.querySelectorAll(".modifier")
+    .forEach(el => el.classList.add("off"))
 }
 
 
