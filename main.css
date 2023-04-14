@@ -1,10 +1,12 @@
 html {
     height: 100%;
-    overflow: hidden;
 }
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Roboto', sans-serif;
-    margin: 16px;
+    margin: 0;
     height: 100vh;
     background-color: var(--bg-col);
     color: var(--text-col);
@@ -41,16 +43,35 @@ button {
     cursor: pointer;
 }
 
-.toggle {
-    background-color: var(--button-red-bg-col);
-    border-color: var(--button-red-bg-col);
-    color: var(--dark-text-col);
-}
-
-.toggleoff {
+.toggle.on {
     background-color: var(--button-blue-bg-col);
     border-color: var(--button-blue-bg-col);
     color: var(--dark-text-col);
+}
+
+.toggle.on#toggle3, .toggle.on#complextoggle {
+    background-color: var(--button-red-bg-col);
+    border-color: var(--button-red-bg-col);
+    color: white;
+}
+
+.toggle {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+
+.container {
+    background-color: var(--bg-emphasis-col);
+    border-radius: 10px;
+    margin: 10px;
+}
+.bigcontainer {
+    display: flex;
+}
+
+.flagbutton.off {
+    background-color: lightgray !important;
 }
 
 .flagbutton#a {
@@ -75,11 +96,13 @@ button {
 }
 
 .flagbutton#homo {
-    background-color: var(--homo)
+    background-color: var(--homo);
+    color: white;
 }
 
 .flagbutton#inter {
-    background-color: var(--inter)
+    background-color: var(--inter);
+    color: white;
 }
 
 .flagbutton#pan { 
@@ -87,7 +110,7 @@ button {
 }
 
 .flagbutton#poly {
-    background-color: var(--poly)
+    background-color: var(--poly);
 }
 
 .flagbutton#queer {
@@ -99,7 +122,8 @@ button {
 }
 
 .flagbutton#sexual {
-    background-color: var(--sexual)
+    background-color: var(--sexual);
+    color: white;
 }
 
 .flagbutton#romantic { 
@@ -107,7 +131,8 @@ button {
 }
 
 .flagbutton#gender {
-    background-color: var(--gender)
+    background-color: var(--gender);
+    color: white;
 }
 
 .flagbutton#gamous {
@@ -116,4 +141,12 @@ button {
 
 .flagbutton#sex {
     background-color: var(--sex)
+}
+
+.flagbutton#masculine {
+    background-color: var(--masculine)
+}
+
+.flagbutton#feminine {
+    background-color: var(--feminine);
 }

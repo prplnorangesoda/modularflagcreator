@@ -43,17 +43,36 @@
       --gender: #6600FF;
       --gamous: #FFFFFF;
       --sex: #FFF301;
+
+      --masculine: #5ACDF9;
+      --feminine: #F5A9B8;
     }
   </style>
 </head>
 
 <body>
   <h1> Dynamic Flag Creator </h1>
-
-  <button class="toggle toggleoff" id="toggle23">2 color mode</button>
-  <button class="toggle toggleoff" id="simpletoggle">simple flag mode</button>
-  <h2> complex flag mode not implemented yet </h2>
-  <!-- simple mode -->
+  <div class="canvascontainer">
+  <canvas id="dynimage" width="900" height="600"> </canvas>
+  </div>
+  <div class="bigcontainer togglecontainer">
+    <div class="container colorcontainer">
+      <button class="toggle on" id="toggle2">2 color mode</button>
+      <button class="toggle" id="toggle3">3 color mode</button>
+    </div>
+    
+    <div class="container simplecontainer">
+      <button class="toggle on" id="simpletoggle">simple flag mode</button>
+      <button class="toggle" id="complextoggle">complex flag mode</button>
+    </div>
+    
+  </div>
+  
+  <h3> complex flag mode not implemented yet </h3>
+  <div class="buttonscontainer" id="modifiercontainer">
+    <button class="flagbutton modifier off" id="masculine">masculine</button>
+    <button class="flagbutton modifier off" id="feminine">feminine</button>
+  </div>
   <div class="buttonscontainer" id="queercontainer">
     <button class="flagbutton queer" id="a">a</button>
     <button class="flagbutton queer" id="bi">bi</button>
@@ -74,14 +93,6 @@
     <button class="flagbutton type" id="gamous">gamous</button>
     <button class="flagbutton type" id="sex">sex</button>
   </div>
-  <div class="buttonscontainer" id="modifiercontainer">
-    <button class="flagbutton modifier off" id="masculine">masculine</button>
-    <button class="flagbutton modifier off" id="feminine">feminine</button>
-  </div>
-  <canvas id="dynimage" width="900" height="600">
-
-  </canvas>
-
   <span class="copyright">
     (c) rafplayz.dev 2023
   </span>

@@ -1,6 +1,9 @@
-let toggle = document.querySelector("#toggle23");
-if (!toggle) throw new Error("#toggle23 undefined");
+let toggle2 = document.querySelector("#toggle2");
+if (!toggle2) throw new Error("#toggle2 undefined");
 let toggleon = false;
+
+let toggle3 = document.querySelector("#toggle3");
+if (!toggle3) throw new Error("#toggle3 undefined");
 
 let simpletoggle = document.querySelector("#simpletoggle");
 if (!simpletoggle) throw new Error("#simpletoggle undefined")
@@ -58,37 +61,34 @@ let modifierImageSrcs = [
   "flagmods/flagmodifiermod/feminine.png",
 ]
 
-toggle.addEventListener("mousedown", ev => {
+toggle2.addEventListener("mousedown", ev => {
   if (ev.button == "0") {
-    toggle.classList.toggle("toggleoff");
     if (toggleon) {
+      toggle3.classList.remove("on");
+      toggle2.classList.add("on");
       toggleon = false;
-      toggle.innerHTML = "2 color mode";
       switchTo2ColorMode();
     }
-    else if (!toggleon) {
-      toggleon = true;
-      toggle.innerHTML = "3 color mode";
-      switchTo3ColorMode();
-    }
+    
   }
 })
-simpletoggle.addEventListener("mousedown", ev => {
-  if (ev.button == "0") {
-    simpletoggle.classList.toggle("toggleoff")
-    if (simpletoggleon) {
-      simpletoggleon = false;
-      simpletoggle.innerHTML = "simple flag mode"
-    }
-    else if (!simpletoggleon) {
-      simpletoggleon = true;
-      simpletoggle.innerHTML = "complex flag mode"
+
+toggle3.addEventListener("mousedown", ev => {
+  if(ev.button == "0") {
+    if (!toggleon) {
+      toggle2.classList.remove("on");
+      toggle3.classList.add("on")
+      toggleon = true;
+      switchTo3ColorMode();
     }
   }
 })
 
 let canvas = document.querySelector("#dynimage");
 let ctx = canvas.getContext("2d");
+ctx.fillStyle = "#FFFFFF"
+ctx.fillRect(0, 0, 900, 600)
+
 
 let image1 = new Image();
 let image2 = new Image();
@@ -106,7 +106,7 @@ function loadImage1(event) {
       ctx.drawImage(image1, 0, 200, 900, 200);
     }
     else {
-      ctx.drawImage(image1, 0, 0);
+      ctx.drawImage(image1, 0, 0, 900, 300);
     }
   };
 }
@@ -135,11 +135,13 @@ function loadImage3(event) {
 }
 
 function switchTo3ColorMode() {
-  ctx.clearRect(0, 0, 900, 600)
+  ctx.fillRect(0, 0, 900, 600)
+  document.querySelectorAll(".modifier").forEach(el => el.classList.remove("off"))
 }
 
 function switchTo2ColorMode() {
-  ctx.clearRect(0, 0, 900, 600)
+  ctx.fillRect(0, 0, 900, 600)
+  document.querySelectorAll(".modifier").forEach(el => el.classList.add("off"))
 }
 
 
