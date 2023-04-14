@@ -69,6 +69,20 @@ button {
 .bigcontainer {
     display: flex;
 }
+.buttonscontainer {
+    display: flex;
+    gap: 5px;
+}
+
+div.divider {
+    opacity: 0.5;
+    height: 4px;
+    width: 20%;
+    background-color: var(--bg-emphasis-col);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
 
 .flagbutton.off {
     background-color: lightgray !important;
