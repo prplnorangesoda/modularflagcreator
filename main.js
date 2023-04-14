@@ -122,14 +122,14 @@ function loadImage1(event) {
   image1.onload = () => {
     if (color3mode) {
       ctx.drawImage(image1, 0, 100, 450, 100);
-      image1mode3 = image1
+      image1mode3 = queerImageSrcs[index]
       if(image1mode3Selected)
         image1mode3Selected.classList.remove("clicked")
       image1mode3Selected = event.target
     }
     else {
       ctx.drawImage(image1, 0, 0, 450, 150);
-      image1mode2 = image1
+      image1mode2 = queerImageSrcs[index]
       if(image1mode2Selected){
         image1mode2Selected.classList.remove("clicked");
       }
@@ -146,14 +146,14 @@ function loadImage2(event) {
   image2.onload = () => {
     if (color3mode) {
       ctx.drawImage(image2, 0, 200, 450, 100)
-      image2mode3 = image2
+      image2mode3 = typeImageSrcs[index]
       if(image2mode3Selected)
         image2mode3Selected.classList.remove("clicked")
       image2mode3Selected = event.target
     }
     else {
       ctx.drawImage(image2, 0, 150, 450, 150)
-      image2mode2 = image2
+      image2mode2 = typeImageSrcs[index]
       if(image2mode2Selected) 
         image2mode2Selected.classList.remove("clicked")
       image2mode2Selected = event.target
@@ -169,7 +169,7 @@ function loadImage3(event) {
     image3.onload = () => {
       ctx.drawImage(image3, 0, 0, 450, 100)
     }
-    image3mode3 = image3;
+    image3mode3 = modifierImageSrcs[index];
     if(image3mode3Selected)
       image3mode3Selected.classList.remove("clicked")
     image3mode3Selected = event.target
@@ -180,10 +180,21 @@ function loadImage3(event) {
 function switchTo3ColorMode() {
   ctx.fillRect(0, 0, 900, 600)
 
-  if(image1mode3) ctx.drawImage(image1mode3, 0, 100, 450, 100)
-  if(image2mode3) ctx.drawImage(image2mode3, 0, 200, 450, 100)
-  if(image3mode3) ctx.drawImage(image3mode3, 0, 0, 450, 100)
-
+  if(image1mode3) {
+    let image1 = new Image();
+    image1.src = image1mode3
+    ctx.drawImage(image1, 0, 100, 450, 100)
+  }
+  if(image2mode3) {
+    let image2 = new Image();
+    image2.src = image2mode3
+    ctx.drawImage(image2, 0, 200, 450, 100)
+  }
+  if(image3mode3) {
+    let image3 = new Image();
+    image3.src = image3mode3
+    ctx.drawImage(image3, 0, 0, 450, 100)
+  }
   
   document.querySelectorAll(".flagbutton")
     .forEach(el => el.classList.remove("clicked"))
@@ -200,8 +211,16 @@ function switchTo3ColorMode() {
 function switchTo2ColorMode() {
   ctx.fillRect(0, 0, 900, 600)
 
-  if(image1mode2) ctx.drawImage(image1mode2, 0, 0, 450, 150)
-  if(image2mode2) ctx.drawImage(image2mode2, 0, 150, 450, 150)
+  if(image1mode2){
+    let image1 = new Image();
+    image1.src = image1mode2
+    ctx.drawImage(image1, 0, 0, 450, 150)
+  }
+  if(image2mode2){
+    let image2 = new Image();
+    image2.src = image2mode2
+    ctx.drawImage(image2, 0, 150, 450, 150)
+  }
 
   document.querySelectorAll(".flagbutton")
     .forEach(el => el.classList.remove("clicked"))
